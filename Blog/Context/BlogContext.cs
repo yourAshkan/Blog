@@ -1,4 +1,5 @@
-﻿using Blog.Model.Entity;
+﻿using Blog.Mapping;
+using Blog.Model.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Context
@@ -11,6 +12,7 @@ namespace Blog.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ArticleMapping());
             modelBuilder.Entity<Article>(x => x.HasKey(x => x.Id));
         }
     }

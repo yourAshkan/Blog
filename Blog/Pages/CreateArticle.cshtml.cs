@@ -1,5 +1,7 @@
 ﻿using Blog.Context;
+using Blog.Model;
 using Blog.Model.Entity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Blog.Pages
@@ -11,15 +13,24 @@ namespace Blog.Pages
         public void OnGet()
         {
         }
-        public void OnPost(CreateArticle command)
+        public RedirectToPageResult OnPost(CreateArticle command)
         {
-            var article = new Article(command.Title, command.Picture, command.PictureALT, command.PictureTilte, command.ShortDescription, command.Description);
+            if (ModelState.IsValid)
+            {
+
+                var article = new Article(command.Title, command.Picture, command.PictureALT, command.PictureTilte, command.ShortDescription, command.Description);
 
 
-            _context.Add(article);
-            _context.SaveChanges();
+                _context.Add(article);
+                _context.SaveChanges();
+                return RedirectToPage("/Index");
 
-            ViewData["Success"] = "مقاله با موفقیت ذخیره شد";
+            }
+            else
+            {
+                TempData["Error"] = "لطفا مقادیر خواسته شده را تکمیل کنید";
+                return RedirectToPage();
+            }
         }
     }
 }

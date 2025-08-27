@@ -5,16 +5,17 @@
 }
 
 <div class="col-12">
-    @if (TempData["Success"] != null)
+    @if (TempData["Error"] != null)
     {
         <div class="alter alter-success">
-            @TempData["Success"]
+            @TempData["Error"]
         </div>
     }
+
     <div class="col-6" mr-auto ml-auto text-center>
         <hr class="border-bottom">ایجاد مقالات جدید</hr>
     </div>
-</div>
+</div> 
 
 <form class="mr-auto ml-auto" method="post">
     <div class="form-row">
@@ -45,6 +46,8 @@
     <div class="form-group">
         <label asp-for="@Model.Command.Description"></label>
         <textarea rows="5" type="text" class="form-control" asp-for="@Model.Command.Description"></textarea>
+        <span asp-validation-for="@Model.Command.Description" class="text-danger"></span>
     </div>
+    
     <button type="submit" class="btn btn-success">ارسال</button>
 </form>

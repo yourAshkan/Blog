@@ -5,6 +5,12 @@
 }
 
 <div class="col-12">
+    @if (TempData["Success"] != null)
+    {
+        <div class="alter alter-success">
+            @TempData["Success"]
+        </div>
+    }
     <div class="col-6" mr-auto ml-auto text-center>
         <hr class="border-bottom">ایجاد مقالات جدید</hr>
     </div>
@@ -23,12 +29,12 @@
             <span asp-validation-for="@Model.Command.Picture" class="text-danger"></span>
         </div>
         <div class="form-group col-md-6">
-            <label asp-for="@Model.Command.PictureAlt"></label>
-            <input class="form-control" asp-for="@Model.Command.PictureAlt">
+            <label asp-for="@Model.Command.PictureALT"></label>
+            <input class="form-control" asp-for="@Model.Command.PictureALT">
         </div>
         <div class="form-group col-md-6">
-            <label asp-for="@Model.Command.PictureTitle"></label>
-            <input class="form-control" asp-for="@Model.Command.PictureTitle">
+            <label asp-for="@Model.Command.PictureTilte"></label>
+            <input class="form-control" asp-for="@Model.Command.PictureTilte">
         </div>
         <div class="form-group col-md-12">
             <label asp-for="@Model.Command.ShortDescription"></label>
@@ -37,8 +43,8 @@
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.Command.Body"></label>
-        <textarea rows="5" type="text" class="form-control" asp-for="@Model.Command.Body"></textarea>
+        <label asp-for="@Model.Command.Description"></label>
+        <textarea rows="5" type="text" class="form-control" asp-for="@Model.Command.Description"></textarea>
     </div>
     <button type="submit" class="btn btn-success">ارسال</button>
 </form>

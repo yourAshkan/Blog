@@ -11,6 +11,7 @@
         public string? Description { get; private set; }
         public DateTime? CreationDate { get; private set; }
         public string? PictureTilte { get; }
+        public bool IsDeleted { get; set; }
 
         public Article()
         {
@@ -26,6 +27,7 @@
             ShortDescription = shortDescription;
             Description = description;
             CreationDate = DateTime.Now;
+            IsDeleted = false;
         }
     }
 }
